@@ -16,8 +16,8 @@ public class FortuneTeller {
 		String fName;
 		String lName;
 		String strAge;
-		String birthMonth;
-		String nbrSiblings;
+		String strBirthMonth;
+		String strNbrSiblings;
 		String favColor;
 		
 		Scanner input;
@@ -41,8 +41,8 @@ public class FortuneTeller {
 		checkForQuit(strAge);
 		
 		System.out.println("What is your birth month? (Enter in MM (1-12) format)");
-		birthMonth = input.nextLine();
-		checkForQuit(birthMonth);
+		strBirthMonth = input.nextLine();
+		checkForQuit(strBirthMonth);
 		
 		System.out.println("What is your favorite ROYGBIV color? "
 		+ "(Enter \"help\" to list the ROYGBIV colors)");
@@ -50,14 +50,20 @@ public class FortuneTeller {
 		checkForQuit(favColor);
 	
 		System.out.println("Now, for the final question! How many siblings do you have?");
-		nbrSiblings = input.nextLine();
-		checkForQuit(nbrSiblings);
+		strNbrSiblings = input.nextLine();
+		checkForQuit(strNbrSiblings);
 		
 		Integer age = Integer.parseInt(strAge);
+		Integer birthMonth = Integer.parseInt(strBirthMonth);
 		
 		int nbrYrsTillRetire = findYearsTillRetire(age.intValue());
-		String vacaHomeLoc = findVacaHomeLocation(Integer.parseInt(nbrSiblings));
+		String vacaHomeLoc = findVacaHomeLocation(Integer.parseInt(strNbrSiblings));
 		String modeOfTransport = findModeOfTransport(favColor);
+		int bankBal = findBankBalance(birthMonth);
+		
+		System.out.println(fName + " " + lName + " will retire in " + nbrYrsTillRetire
+				+ " years with $" + bankBal + " in the bank, a vacation home in " + vacaHomeLoc 
+				+ ", and travel by " + modeOfTransport + ".");
 	}
 	
 	public static void checkForQuit(String userInput) {
@@ -147,4 +153,28 @@ public class FortuneTeller {
 		return modeOfTransport;
 	}
 
+public static int findBankBalance(int birthMonth) {
+		
+		// Determine the bank balance based on the user's birthday month
+		int bankBal = 0;
+		
+		if (birthMonth >= 1 && birthMonth <=4) {
+			System.out.println("birth month 1-4");
+			bankBal = 400000;
+		} else if (birthMonth > 4 && birthMonth <= 8) {
+			System.out.println("birth month 5-8");
+			bankBal = 800000;
+		} else if (birthMonth > 8 && birthMonth <= 12) {
+			System.out.println("birth month 9-12");
+			bankBal = 1200000;
+		} else  {
+			System.out.println("something besides 1-12 entered for birth month");
+			bankBal = 0;
+		} 
+		
+		System.out.println("the bank balance is " + bankBal);
+		return bankBal;
+	}
+
+	
 }
