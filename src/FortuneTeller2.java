@@ -1,13 +1,16 @@
 import java.util.Scanner;
+// save to play around with how the input is working with new lines
 
-public class FortuneTeller {
+
+public class FortuneTeller2 {
 
 	
 	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		getUserInfo();
+	
+		//getUserInfo();
 	}
 	
 	public static void getUserInfo() {
@@ -15,9 +18,9 @@ public class FortuneTeller {
 		// data input by the user
 		String fName;
 		String lName;
-		String age;
-		String birthMonth;
-		String nbrSiblings;
+		int age;
+		int birthMonth;
+		int nbrSiblings;
 		String favColor;
 		
 		Scanner input;
@@ -30,28 +33,24 @@ public class FortuneTeller {
 		
 		System.out.println("What is your first name?");
 		fName = input.nextLine();
-		checkForQuit(fName);
 		
 		System.out.println("What is your last name?");
 		lName = input.nextLine();
-		checkForQuit(lName);
 		
 		System.out.println("What is your birth month? (Enter in MM (1-12) format)");
-		birthMonth = input.nextLine();
-		checkForQuit(birthMonth);
+		birthMonth = input.nextInt();
 		
 		System.out.println("What is your age?");
-		age = input.nextLine();
-		checkForQuit(age);
+		age = input.nextInt();
 		
 		System.out.println("How many siblings do you have?");
-		nbrSiblings = input.nextLine();
-		checkForQuit(nbrSiblings);
+		nbrSiblings = input.nextInt();
+		input.nextLine();
 		
 		System.out.println("Now, for the final question! What is your favorite ROYGBIV color? "
 		+ "(Enter \"help\" to list the ROYGBIV colors)");
 		favColor = input.nextLine();
-		checkForQuit(favColor);
+		
 	
 	}
 	
@@ -59,7 +58,6 @@ public class FortuneTeller {
 		
 		// if the user enters "quit" for any question, stop running.
 		if (userInput.equals("quit")) {
-			System.out.println("Nobody likes a quitter...");
 			System.exit(0);
 		}
 	}
