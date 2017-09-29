@@ -47,6 +47,15 @@ public class FortuneTeller {
 		System.out.println("What is your favorite ROYGBIV color? "
 		+ "(Enter \"help\" to list the ROYGBIV colors)");
 		favColor = input.nextLine();
+		System.out.println("fav color is " + favColor);
+		if (favColor.equals("help")) {
+			System.out.println("she entered help");
+		}
+		while (favColor.toLowerCase().equals("help")) {
+			System.out.println("The ROYGBIV colors are red, orange, yellow, green, blue, indigo, violet.");
+			favColor = input.nextLine();
+			checkForQuit(favColor);
+		}
 		checkForQuit(favColor);
 	
 		System.out.println("Now, for the final question! How many siblings do you have?");
