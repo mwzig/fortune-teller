@@ -116,11 +116,13 @@ public class FortuneTeller {
 				+ " in the bank, a vacation home in " + vacaHomeLoc + ", and travel by " + modeOfTransport + ".");
 	}
 
+
+	// **************************************************************************************************//
+	// The requirements state that if the age is even, we need one result
+	// for years to retire, and if it is odd, we need a different result
+	// **************************************************************************************************//
 	private int findYearsTillRetire(int age) {
-
-		// The requirements state that if the age is even, we need one result
-		// for years to retire, and if it is odd, we need a different result
-
+	
 		if (age % 2 == 0) {
 			System.out.println("age is " + age + " remainder 0" + " 10 years till retirement");
 			return 10;
@@ -128,7 +130,6 @@ public class FortuneTeller {
 			System.out.println("age is " + age + " remainder 1 " + "15 years till retirement");
 			return 15;
 		}
-
 	}
 
 	// **************************************************************************************************//
