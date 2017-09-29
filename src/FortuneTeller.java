@@ -56,6 +56,7 @@ public class FortuneTeller {
 		Integer age = Integer.parseInt(strAge);
 		
 		int nbrYrsTillRetire = findYearsTillRetire(age.intValue());
+		String vacaHomeLoc = findVacaHomeLocation(Integer.parseInt(nbrSiblings));
 	}
 	
 	public static void checkForQuit(String userInput) {
@@ -83,4 +84,33 @@ public class FortuneTeller {
 		}
 		
 	}
+	
+	public static String findVacaHomeLocation(int nbrSiblings) {
+		
+		// Determine the vacation home location based on the user's number of siblings
+		String vacaHomeLoc = "";
+		
+		if (nbrSiblings == 0) {
+			System.out.println("0 siblings, loc is Florida");
+			vacaHomeLoc = "Orland, FL";
+		} else if (nbrSiblings == 1) {
+			System.out.println("1 sibling, loc is Idaho");
+			vacaHomeLoc = "Boise, Id";
+		} else if (nbrSiblings == 2) {
+			System.out.println("2 siblings, loc is Dallas, TX");
+			vacaHomeLoc = "Dallas, TX";
+		} else if (nbrSiblings == 3) {
+			System.out.println("3 siblings, loc is Phoenix, AZ");
+			vacaHomeLoc = "Phoenix, AZ";
+		} else if (nbrSiblings > 3) {
+			System.out.println(">3 Siblings, loc is Demoines, IA");
+			vacaHomeLoc = "Demoines, IA";
+		} else if (nbrSiblings < 0) {
+			System.out.println("0 Siblings!!! What????");
+			vacaHomeLoc = "Meridian, MS";
+		}
+			
+		return vacaHomeLoc;
+	}
+	
 }
