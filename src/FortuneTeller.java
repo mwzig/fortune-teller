@@ -15,7 +15,7 @@ public class FortuneTeller {
 		// data input by the user
 		String fName;
 		String lName;
-		String age;
+		String strAge;
 		String birthMonth;
 		String nbrSiblings;
 		String favColor;
@@ -35,24 +35,27 @@ public class FortuneTeller {
 		System.out.println("What is your last name?");
 		lName = input.nextLine();
 		checkForQuit(lName);
+
+		System.out.println("What is your age?");
+		strAge = input.nextLine();
+		checkForQuit(strAge);
 		
 		System.out.println("What is your birth month? (Enter in MM (1-12) format)");
 		birthMonth = input.nextLine();
 		checkForQuit(birthMonth);
 		
-		System.out.println("What is your age?");
-		age = input.nextLine();
-		checkForQuit(age);
-		
-		System.out.println("How many siblings do you have?");
-		nbrSiblings = input.nextLine();
-		checkForQuit(nbrSiblings);
-		
-		System.out.println("Now, for the final question! What is your favorite ROYGBIV color? "
+		System.out.println("What is your favorite ROYGBIV color? "
 		+ "(Enter \"help\" to list the ROYGBIV colors)");
 		favColor = input.nextLine();
 		checkForQuit(favColor);
 	
+		System.out.println("Now, for the final question! How many siblings do you have?");
+		nbrSiblings = input.nextLine();
+		checkForQuit(nbrSiblings);
+		
+		Integer age = Integer.parseInt(strAge);
+		
+		int nbrYrsTillRetire = findYearsTillRetire(age.intValue());
 	}
 	
 	public static void checkForQuit(String userInput) {
@@ -62,5 +65,22 @@ public class FortuneTeller {
 			System.out.println("Nobody likes a quitter...");
 			System.exit(0);
 		}
+	}
+	
+	public static int findYearsTillRetire(int age) {
+	
+		// The requirements state that if the age is even, we need one result 
+		// for years to retire, and if it is odd, we need a different result
+		
+			
+		if (age%2 == 0) {
+			System.out.println("age is " + age + " remainder 0" + " 10 years till retirement");
+			return 10;
+		}
+		else{
+			System.out.println("age is " + age + " remainder 1 " + "15 years till retirement");
+			return 15;
+		}
+		
 	}
 }
