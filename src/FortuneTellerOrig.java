@@ -1,43 +1,26 @@
 import java.util.Scanner;
 
-public class FortuneTeller3 {
+public class FortuneTellerOrig {
 
-	// user input data
-	private String fName;
-	private String lName;
-	private String strAge;
-	private String strBirthMonth;
-	private String strNbrSiblings;
-	private String favColor;
 	
-	// values calculated from determining fortune
-	private int nbrYrsTillRetire;
-	private String vacaHomeLoc;
-	private String modeOfTransport;
-	private int bankBal;
-	
-		
 	public static void main(String[] args) {
-		
-		FortuneTeller3 fortuneTeller = new FortuneTeller3();
-		fortuneTeller.tellFortune();
-	}			
-	
-	public void tellFortune() {
-		
-		// First, get data we need from the user in order to determine his/her future.
-		getUserInput();
-		// Next, determine the fortune based on the input.
-		determineFortune();
-		// Next, print the user's fortune to the console.
-		printFortune();
-	
+		// TODO Auto-generated method stub
+		getUserInfo();
 	}
 	
-	// This method gets data we need from the user in order to determine his/her future.
-	private void getUserInput() {
+	public static void getUserInfo() {
+	
+		// data input by the user
+		String fName;
+		String lName;
+		String strAge;
+		String strBirthMonth;
+		String strNbrSiblings;
+		String favColor;
 		
-		Scanner input = new Scanner(System.in);
+		Scanner input;
+		
+		input = new Scanner(System.in);
 		
 		System.out.println("Greetings!  We are here to tell your fortune!");
 		System.out.println("First, we will need to ask you for some information. " 
@@ -62,6 +45,10 @@ public class FortuneTeller3 {
 		System.out.println("What is your favorite ROYGBIV color? "
 		+ "(Enter \"help\" to list the ROYGBIV colors)");
 		favColor = input.nextLine();
+		System.out.println("fav color is " + favColor);
+		if (favColor.equals("help")) {
+			System.out.println("she entered help");
+		}
 		while (favColor.toLowerCase().equals("help")) {
 			System.out.println("The ROYGBIV colors are red, orange, yellow, green, blue, indigo, violet.");
 			favColor = input.nextLine();
@@ -73,7 +60,17 @@ public class FortuneTeller3 {
 		strNbrSiblings = input.nextLine();
 		checkForQuit(strNbrSiblings);
 		
+		Integer age = Integer.parseInt(strAge);
+		Integer birthMonth = Integer.parseInt(strBirthMonth);
 		
+		int nbrYrsTillRetire = findYearsTillRetire(age.intValue());
+		String vacaHomeLoc = findVacaHomeLocation(Integer.parseInt(strNbrSiblings));
+		String modeOfTransport = findModeOfTransport(favColor);
+		int bankBal = findBankBalance(birthMonth);
+		
+		System.out.println(fName + " " + lName + " will retire in " + nbrYrsTillRetire
+				+ " years with $" + bankBal + " in the bank, a vacation home in " + vacaHomeLoc 
+				+ ", and travel by " + modeOfTransport + ".");
 	}
 	
 	public static void checkForQuit(String userInput) {
@@ -85,30 +82,12 @@ public class FortuneTeller3 {
 		}
 	}
 	
-	private void determineFortune() {
-		
-		Integer age = Integer.parseInt(strAge);
-		Integer birthMonth = Integer.parseInt(strBirthMonth);
-		
-		nbrYrsTillRetire = findYearsTillRetire(age.intValue());
-		vacaHomeLoc = findVacaHomeLocation(Integer.parseInt(strNbrSiblings));
-		modeOfTransport = findModeOfTransport(favColor);
-		bankBal = findBankBalance(birthMonth);
-		
-	}
-
-	private void printFortune() {
-				
-		System.out.println(fName + " " + lName + " will retire in " + nbrYrsTillRetire
-				+ " years with $" + bankBal + " in the bank, a vacation home in " + vacaHomeLoc 
-				+ ", and travel by " + modeOfTransport + ".");
-	}	
-
-	private int findYearsTillRetire(int age) {
+	public static int findYearsTillRetire(int age) {
 	
 		// The requirements state that if the age is even, we need one result 
 		// for years to retire, and if it is odd, we need a different result
-					
+		
+			
 		if (age%2 == 0) {
 			System.out.println("age is " + age + " remainder 0" + " 10 years till retirement");
 			return 10;
@@ -120,7 +99,7 @@ public class FortuneTeller3 {
 		
 	}
 	
-	private String findVacaHomeLocation(int nbrSiblings) {
+	public static String findVacaHomeLocation(int nbrSiblings) {
 		
 		// Determine the vacation home location based on the user's number of siblings
 		String vacaHomeLoc = "";
@@ -148,7 +127,7 @@ public class FortuneTeller3 {
 		return vacaHomeLoc;
 	}
 
-	private String findModeOfTransport(String favColor) {
+	public static String findModeOfTransport(String favColor) {
 		
 		// Determine the vacation home location based on the user's number of siblings
 		String modeOfTransport = "";
@@ -181,7 +160,7 @@ public class FortuneTeller3 {
 		return modeOfTransport;
 	}
 
-private int findBankBalance(int birthMonth) {
+public static int findBankBalance(int birthMonth) {
 		
 		// Determine the bank balance based on the user's birthday month
 		int bankBal = 0;
