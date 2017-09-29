@@ -57,6 +57,7 @@ public class FortuneTeller {
 		
 		int nbrYrsTillRetire = findYearsTillRetire(age.intValue());
 		String vacaHomeLoc = findVacaHomeLocation(Integer.parseInt(nbrSiblings));
+		String modeOfTransport = findModeOfTransport(favColor);
 	}
 	
 	public static void checkForQuit(String userInput) {
@@ -112,5 +113,38 @@ public class FortuneTeller {
 			
 		return vacaHomeLoc;
 	}
-	
+
+	public static String findModeOfTransport(String favColor) {
+		
+		// Determine the vacation home location based on the user's number of siblings
+		String modeOfTransport = "";
+		
+		switch (favColor.toLowerCase()) {
+			case "red":
+				modeOfTransport = "VW Bug";
+				break;
+			case "orange":
+				modeOfTransport = "VW Passat";
+				break;
+			case "yellow":
+				modeOfTransport = "Honda minivan";
+				break;
+			case "green":
+				modeOfTransport = "Honda Accord";
+				break;
+			case "blue":
+				modeOfTransport = "Honda Fit";
+				break;
+			case "indigo":
+				modeOfTransport = "Honda Civic";
+				break;
+			case "violet":
+				modeOfTransport = "Honda CRV";
+				break;
+			default: modeOfTransport = "Horse and Buggy";
+		}
+		System.out.println("fav color is " + favColor + " mode of transport is " + modeOfTransport);
+		return modeOfTransport;
+	}
+
 }
