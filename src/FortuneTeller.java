@@ -29,7 +29,7 @@ public class FortuneTeller {
 		// Next, determine the fortune based on the input.  If data is missing, and
 		// we don't check for it, the program will crash in the determineFortune method.
 		// To keep it simple and prevent that, just send a message if any field is missing
-		// and 
+		// and stop running.
 		if (strAge.isEmpty() || strBirthMonth.isEmpty() || strNbrSiblings.isEmpty()
 				|| favColor.isEmpty() || fName.isEmpty() || lName.isEmpty() ) {
 			System.out.println("Some input is missing, sorry we cannot tell your fortune.");
