@@ -26,10 +26,19 @@ public class FortuneTeller {
 
 		// First, get data we need from the user in order to determine his/her future.
 		getUserInput();
-		// Next, determine the fortune based on the input.
-		determineFortune();
-		// Next, print the user's fortune to the console.
-		printFortune();
+		// Next, determine the fortune based on the input.  If data is missing, and
+		// we don't check for it, the program will crash in the determineFortune method.
+		// To keep it simple and prevent that, just send a message if any field is missing
+		// and 
+		if (strAge.isEmpty() || strBirthMonth.isEmpty() || strNbrSiblings.isEmpty()
+				|| favColor.isEmpty() || fName.isEmpty() || lName.isEmpty() ) {
+			System.out.println("Some input is missing, sorry we cannot tell your fortune.");
+			return;
+		} else {
+			determineFortune();
+			// Next, print the user's fortune to the console.
+			printFortune();
+		}
 
 	}
 
@@ -124,10 +133,8 @@ public class FortuneTeller {
 	private int findYearsTillRetire(int age) {
 	
 		if (age % 2 == 0) {
-			System.out.println("age is " + age + " remainder 0" + " 10 years till retirement");
 			return 10;
 		} else {
-			System.out.println("age is " + age + " remainder 1 " + "15 years till retirement");
 			return 15;
 		}
 	}
@@ -140,22 +147,16 @@ public class FortuneTeller {
 		String vacaHomeLoc = "";
 
 		if (nbrSiblings == 0) {
-			System.out.println("0 siblings, loc is Florida");
-			vacaHomeLoc = "Orland, FL";
+			vacaHomeLoc = "Orlando, FL";
 		} else if (nbrSiblings == 1) {
-			System.out.println("1 sibling, loc is Idaho");
-			vacaHomeLoc = "Boise, Id";
+			vacaHomeLoc = "Boise, ID";
 		} else if (nbrSiblings == 2) {
-			System.out.println("2 siblings, loc is Dallas, TX");
-			vacaHomeLoc = "Dallas, TX";
+			vacaHomeLoc = "Ocean City, MD";
 		} else if (nbrSiblings == 3) {
-			System.out.println("3 siblings, loc is Phoenix, AZ");
 			vacaHomeLoc = "Phoenix, AZ";
 		} else if (nbrSiblings > 3) {
-			System.out.println(">3 Siblings, loc is Demoines, IA");
-			vacaHomeLoc = "Demoines, IA";
+			vacaHomeLoc = "Hilton Head, SC";
 		} else if (nbrSiblings < 0) {
-			System.out.println("0 Siblings!!! What????");
 			vacaHomeLoc = "Meridian, MS";
 		}
 
@@ -167,7 +168,6 @@ public class FortuneTeller {
 	// **************************************************************************************************//
 	private String findModeOfTransport(String favColor) {
 
-		// Determine the vacation home location based on the user's number of siblings
 		String modeOfTransport = "";
 
 		switch (favColor.toLowerCase()) {
@@ -175,10 +175,10 @@ public class FortuneTeller {
 			modeOfTransport = "VW Bug";
 			break;
 		case "orange":
-			modeOfTransport = "VW Passat";
+			modeOfTransport = "horse and buggy";
 			break;
 		case "yellow":
-			modeOfTransport = "Honda minivan";
+			modeOfTransport = "Honda Odyssey";
 			break;
 		case "green":
 			modeOfTransport = "Honda Accord";
@@ -193,9 +193,9 @@ public class FortuneTeller {
 			modeOfTransport = "Honda CRV";
 			break;
 		default:
-			modeOfTransport = "Horse and Buggy";
+			modeOfTransport = "undetermined (invalid ROYGBIV color inputs)";
 		}
-		System.out.println("fav color is " + favColor + " mode of transport is " + modeOfTransport);
+		
 		return modeOfTransport;
 	}
 
@@ -207,20 +207,15 @@ public class FortuneTeller {
 		int bankBal = 0;
 
 		if (birthMonth >= 1 && birthMonth <= 4) {
-			System.out.println("birth month 1-4");
 			bankBal = 400000;
 		} else if (birthMonth > 4 && birthMonth <= 8) {
-			System.out.println("birth month 5-8");
 			bankBal = 800000;
 		} else if (birthMonth > 8 && birthMonth <= 12) {
-			System.out.println("birth month 9-12");
 			bankBal = 1200000;
 		} else {
-			System.out.println("something besides 1-12 entered for birth month");
 			bankBal = 0;
 		}
 
-		System.out.println("the bank balance is " + bankBal);
 		return bankBal;
 	}
 
